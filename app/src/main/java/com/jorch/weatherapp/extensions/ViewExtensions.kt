@@ -1,4 +1,4 @@
-package com.jorch.weatherapp.ui.utils
+package com.jorch.weatherapp.extensions
 
 import android.content.Context
 import android.view.View

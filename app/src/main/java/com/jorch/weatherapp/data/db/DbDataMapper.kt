@@ -4,6 +4,7 @@ import com.jorch.weatherapp.domain.model.Forecast
 import com.jorch.weatherapp.domain.model.ForecastList
 
 class DbDataMapper {
+
     fun convertFromDomain(forecast: ForecastList) = with(forecast) {
         val daily = dailyForecast.map { convertDayFromDomain(id, it) }
         CityForecast(id, city, country, daily)

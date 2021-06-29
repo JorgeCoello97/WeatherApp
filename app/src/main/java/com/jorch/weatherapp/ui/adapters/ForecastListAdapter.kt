@@ -3,17 +3,17 @@ package com.jorch.weatherapp.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jorch.weatherapp.R
 import com.jorch.weatherapp.domain.model.Forecast
 import com.jorch.weatherapp.domain.model.ForecastList
-import com.jorch.weatherapp.ui.utils.ctx
+import com.jorch.weatherapp.extensions.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_forecast.*
 import kotlinx.android.synthetic.main.item_forecast.view.*
+import java.text.DateFormat
+import java.util.*
 
 class ForecastListAdapter(private val weekForecast: ForecastList,
                           private val itemClick: (Forecast) -> Unit ) :
@@ -40,13 +40,16 @@ class ForecastListAdapter(private val weekForecast: ForecastList,
         fun bindForecast(forecast: Forecast){
             with(forecast){
                 Picasso.with(itemView.ctx).load(iconUrl).into(itemView.icon)
-                dateText.text = date
+                dateText.text = convertDate(date)
                 descriptionText.text = description
                 maxTemperature.text = "${high}º"
                 minTemperature.text = "${low}º"
                 itemView.setOnClickListener { itemClick(this) }
             }
         }
-
+        private fun convertDate(date: Long): String {
+            val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+            return df.format(date)
+        }
     }
 }

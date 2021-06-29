@@ -3,12 +3,12 @@ import com.jorch.weatherapp.domain.model.ForecastList
 import com.jorch.weatherapp.extensions.clear
 import com.jorch.weatherapp.extensions.parseList
 import com.jorch.weatherapp.extensions.parseOpt
-import com.jorch.weatherapp.extensions.toVargargArray
+import com.jorch.weatherapp.extensions.toVarargArray
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
-class ForecastDb (private val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
-                  private val dataMapper: DbDataMapper = DbDataMapper()){
+class ForecastDb(private val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
+                 private val dataMapper: DbDataMapper = DbDataMapper()) {
 
     fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
 
@@ -25,12 +25,13 @@ class ForecastDb (private val forecastDbHelper: ForecastDbHelper = ForecastDbHel
     }
 
     fun saveForecast(forecast: ForecastList) = forecastDbHelper.use {
+
         clear(CityForecastTable.NAME)
         clear(DayForecastTable.NAME)
 
-        with(dataMapper.convertFromDomain(forecast)){
-            insert(CityForecastTable.NAME, *map.toVargargArray())
-            dailyForecast.forEach { insert(DayForecastTable.NAME, *it.map.toVargargArray()) }
+        with(dataMapper.convertFromDomain(forecast)) {
+            insert(CityForecastTable.NAME, *map.toVarargArray())
+            dailyForecast.forEach { insert(DayForecastTable.NAME, *it.map.toVarargArray()) }
         }
     }
 }

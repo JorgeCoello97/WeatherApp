@@ -1,12 +1,12 @@
 package com.jorch.weatherapp.ui
 
 import android.app.Application
-import com.jorch.weatherapp.ui.utils.DelegateExt
+import com.jorch.weatherapp.extensions.DelegatesExt
 
 class App :Application() {
 
     companion object {
-        var instance: App by DelegateExt.notNullSingleValue()
+        var instance: App by DelegatesExt.notNullSingleValue()
     }
 
     override fun onCreate() {
