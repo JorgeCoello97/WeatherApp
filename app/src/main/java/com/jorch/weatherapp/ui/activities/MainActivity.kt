@@ -1,6 +1,7 @@
 package com.jorch.weatherapp.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,12 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand(94043).execute()
             uiThread {
-                val adapter = ForecastListAdapter(result) { toast(it.description) }
+                val adapter = ForecastListAdapter(result) {
+                    startActivity<DetailActivity>(
+                        DetailActivity.ID to it.id,
+                        DetailActivity.CITY_NAME to result.city
+                        )
+                }
                 forecastList.adapter = adapter
             }
         }

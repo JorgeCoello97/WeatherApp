@@ -1,16 +1,15 @@
 package com.jorch.weatherapp.data.db
+import com.jorch.weatherapp.domain.datasource.ForecastDataSource
+import com.jorch.weatherapp.domain.model.Forecast
 import com.jorch.weatherapp.domain.model.ForecastList
-import com.jorch.weatherapp.extensions.clear
-import com.jorch.weatherapp.extensions.parseList
-import com.jorch.weatherapp.extensions.parseOpt
-import com.jorch.weatherapp.extensions.toVarargArray
+import com.jorch.weatherapp.extensions.*
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
 class ForecastDb(private val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
-                 private val dataMapper: DbDataMapper = DbDataMapper()) {
+                 private val dataMapper: DbDataMapper = DbDataMapper()): ForecastDataSource {
 
-    fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
+    override fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use {
 
         val dailyRequest = "${DayForecastTable.CITY_ID} = ? AND ${DayForecastTable.DATE} >= ?"
         val dailyForecast = select(DayForecastTable.NAME)
@@ -22,6 +21,13 @@ class ForecastDb(private val forecastDbHelper: ForecastDbHelper = ForecastDbHelp
             .parseOpt { CityForecast(HashMap(it), dailyForecast) }
 
         if (city != null) dataMapper.convertToDomain(city) else null
+    }
+
+    override fun requestDayForecast(id: Long): Forecast? = forecastDbHelper.use {
+        val forecast = select(DayForecastTable.NAME)
+                        .byId(id).parseOpt{DayForecast(HashMap(it))}
+
+        if (forecast != null) dataMapper.convertDayToDomain(forecast) else null
     }
 
     fun saveForecast(forecast: ForecastList) = forecastDbHelper.use {
