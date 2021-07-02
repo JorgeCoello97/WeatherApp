@@ -3,6 +3,7 @@ package com.jorch.weatherapp.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import com.jorch.weatherapp.R
 import com.jorch.weatherapp.domain.commands.RequestDayForecastCommand
 import org.jetbrains.anko.doAsync
@@ -12,10 +13,12 @@ import com.jorch.weatherapp.extensions.textColor
 import com.jorch.weatherapp.extensions.toDateString
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
+import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
 import java.text.DateFormat
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), ToolbarManager {
+    override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
     companion object{
         const val ID = "DetailActivity:id"
@@ -25,8 +28,11 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        initToolbar()
 
         title = intent.getStringExtra(CITY_NAME)
+
+        enableHomeAsUp { onBackPressed() }
 
         doAsync {
             val result = RequestDayForecastCommand(intent.getLongExtra(ID,-1)).execute()
