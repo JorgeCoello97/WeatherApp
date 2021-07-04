@@ -14,8 +14,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b62ca4c-3607-40d0-8148-6be84ca5bd22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/ui/activities/SettingsActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/data/db/ForecastDb.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/data/db/ForecastDb.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/extensions/DelegatesExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/extensions/DelegatesExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/ui/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/ui/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/ui/activities/ToolbarManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jorch/weatherapp/ui/activities/ToolbarManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +70,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-viewC:/Users/Jorch/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED" value="Toolbar" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -79,6 +87,9 @@
       <recent name="com.jorch.weatherapp" />
     </key>
     <key name="android.template.-2070127694">
+      <recent name="com.jorch.weatherapp.ui.activities" />
+    </key>
+    <key name="android.template.1608176951">
       <recent name="com.jorch.weatherapp.ui.activities" />
     </key>
   </component>
@@ -228,5 +239,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="168" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624957126115" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1625436783720">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625436783720" />
   </component>
 </project>
