@@ -13,11 +13,14 @@ import com.jorch.weatherapp.extensions.textColor
 import com.jorch.weatherapp.extensions.toDateString
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
 import java.text.DateFormat
 
-class DetailActivity : AppCompatActivity(), ToolbarManager {
+class DetailActivity : CoroutineScopeActivity(), ToolbarManager {
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
     companion object{
@@ -34,9 +37,10 @@ class DetailActivity : AppCompatActivity(), ToolbarManager {
 
         enableHomeAsUp { onBackPressed() }
 
-        doAsync {
-            val result = RequestDayForecastCommand(intent.getLongExtra(ID,-1)).execute()
-            uiThread { bindForecast(result) }
+        launch {
+            val id = intent.getLongExtra(ID,-1)
+            val result = withContext(Dispatchers.IO) { RequestDayForecastCommand(id).execute() }
+            bindForecast(result)
         }
     }
 
